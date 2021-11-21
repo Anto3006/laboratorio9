@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Poke API </title>
+    </head>
+    <body>
+        <h1>Buscador de Pokemón</h1>
+        <div class="entrada-nombre-pokemon">
+            <div class="col">
+                <div class="row">
+                    <input id="name-input" type="text" placeholder="Nombre del Pokemón">
+                    <button onclick="findPokemon()">Buscar</button>
+                </div>
+                <div class="row">
+                    <div id="pokemon-img"></div>
+                </div>
+                <div class="row">
+                    <div id="pokemon-details"></div>
+                </div>
+            </div>
+        </div>
+        <script src="./pokemon.js"> </script>
+        <link rel="stylesheet" href="./pokemon.css">
+    </body>
+</html>

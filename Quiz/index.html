@@ -1,0 +1,74 @@
+<html>
+    <body>
+        <div class="contenedor-quiz">
+            <div class="contenedor-titulo">
+                <h1>Quiz de Álgebra Simple</h1>
+                <hr></hr>
+            </div>
+            <div class="contenedor-enunciado">
+                <div class="enunciado">
+                    <h3>Instrucciones</h3>
+                    <p>Ingrese el número de preguntas que quiera responder</p>
+                    <p>Para cada pregunta ingrese el resultado en la casilla correspondiente</p>
+                </div>
+            </div>
+            <div class="contenedor-preguntas">
+                <label class="numero-preguntas">
+                    Número de Preguntas
+                    <input type="text" class="campo-numero-preguntas">
+                    <button type="button" class="boton-numero-preguntas">Seleccionar</button>
+                </label>
+                <div class = "contenedor-preguntas-responder"></div>
+            </div>
+            <div class="contenedor-botones-respuestas">
+                <button type="button" class="boton-ver-respuestas">Ver respuestas</button>
+                <button type="button" class="boton-revisar-respuestas">Revisar respuestas</button>
+            </div>
+        </div>
+
+        <div id="modal-confirmacion-ver-respuestas" class="modal">
+            <div class="contenido-modal">
+              <span class="close">&times;</span>
+              <h2>¿Seguro que quiere ver las respuetas?</h2>
+              <button type="button" class="boton-ver-respuestas-modal">Ver respuestas</button>
+            </div>  
+        </div>
+
+        <div id="modal-confirmacion-revisar-respuestas" class="modal">
+            <div class="contenido-modal">
+              <span class="close">&times;</span>
+              <h2>¿Seguro que quiere revisar el quiz?</h2>
+              <button type="button" class="boton-revisar-respuestas-modal">Revisar respuestas</button>
+            </div>  
+        </div>
+
+    </body>
+</html>
+<link rel="stylesheet" href="./respuestaCorta.css">
+<script src="respuestaCorta.js"></script>
+<script type="text/javascript">
+    let quiz = new QuizAlgebraSimple(document.getElementsByClassName("contenedor-quiz")[0]);
+    let botonSeleccionNumeroPreguntas = document.getElementsByClassName("boton-numero-preguntas")[0];
+    botonSeleccionNumeroPreguntas.addEventListener("click",() => {quiz.agregarPreguntas()});
+
+    let modalVerRespuestas = document.getElementById("modal-confirmacion-ver-respuestas");
+    let botonCerrarModalVerRespuestas = modalVerRespuestas.getElementsByClassName("close")[0];
+    botonCerrarModalVerRespuestas.addEventListener("click",()=>modalVerRespuestas.style.display = "none")
+
+    let botonVerRepuestas = document.getElementsByClassName("boton-ver-respuestas")[0];
+    botonVerRepuestas.addEventListener("click",() => {mostrarModalVerRespuestas()});
+
+    let modalRevisarRespuestas = document.getElementById("modal-confirmacion-revisar-respuestas");
+    let botonCerrarModalRevisarRespuestas = modalRevisarRespuestas.getElementsByClassName("close")[0];
+    botonCerrarModalRevisarRespuestas.addEventListener("click",()=>modalRevisarRespuestas.style.display = "none")
+    
+    let botonRevisarRepuestas = document.getElementsByClassName("boton-revisar-respuestas")[0];
+    botonRevisarRepuestas.addEventListener("click",() => {mostrarModalRevisarRespuestas();});
+
+    let botonVerRepuestasModal = document.getElementsByClassName("boton-ver-respuestas-modal")[0];
+    botonVerRepuestasModal.addEventListener("click",() => {quiz.ponerRespuestas(); modalVerRespuestas.style.display ="none";});
+
+    let botonRevisarRepuestasModal = document.getElementsByClassName("boton-revisar-respuestas-modal")[0];
+    botonRevisarRepuestasModal.addEventListener("click",() => {quiz.revisarRespuestas(); modalRevisarRespuestas.style.display = "none";});
+    
+</script>
